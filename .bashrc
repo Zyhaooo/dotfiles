@@ -52,10 +52,10 @@ set_prompt() {
     local current_dir="${YELLOW}\W${RESET}"
 
     # Git信息（提升对比度）
-    git_status="$(__git_ps1 "[%s]")"
+    git_status="$(__git_ps1 " (%s)")"
 
     # 最终PS1（保持原有结构，优化颜色）
-    PS1="[${current_dir}]${git_status}${status_color} #${RESET} "
+    PS1="[${current_dir}${git_status}]${status_color} #${RESET} "
 }
 # 每次显示提示符前更新状态
 PROMPT_COMMAND=set_prompt
