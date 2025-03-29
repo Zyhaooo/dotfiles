@@ -1,0 +1,88 @@
+[[language]]
+name = "dart"
+file-types = [ "dart" ]
+roots = [ "pubspec.yaml" ]
+auto-format = true
+comment-token = "//"
+language-servers = [ "dart" ]
+
+  [language.block-comment-tokens]
+  start = "/*"
+  end = "*/"
+
+  [language.indent]
+  tab-width = 2
+  unit = "  "
+
+[language-server.dart]
+command = "dart"
+args = [ "language-server", "--client-id=helix" ]
+config = { closingLabels = true }
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[language-server.rust-analyzer.config.inlayHints.bindingModeHints]
+enable = true
+
+[language-server.rust-analyzer.config.inlayHints.closingBraceHints]
+minLines = 10
+
+[language-server.rust-analyzer.config.inlayHints.closureReturnTypeHints]
+enable = "with_block"
+
+[language-server.rust-analyzer.config.inlayHints.discriminantHints]
+enable = "fieldless"
+
+[language-server.rust-analyzer.config.inlayHints.lifetimeElisionHints]
+enable = "skip_trivial"
+
+[language-server.rust-analyzer.config.inlayHints.typeHints]
+hideClosureInitialization = true
+
+[[language]]
+name = "go"
+auto-format = true
+
+  [language.formatter]
+  command = "goimports"
+
+[language-server.gopls]
+command = "gopls"
+
+  [language-server.gopls.config]
+  gofumpt = true
+  local = "goimports"
+  semanticTokens = true
+  staticcheck = true
+  verboseOutput = true
+  completeUnimported = true
+  symbolScope = "all"
+
+    [language-server.gopls.config.analyses]
+    fieldalignment = true
+    nilness = true
+    unusedparams = true
+    unusedwrite = true
+    useany = true
+    unusedvariable = true
+    timeformat = true
+
+    [language-server.gopls.config.hints]
+    compositeLiteralFields = true
+    compositeLiteralTypes = true
+    constantValues = true
+    functionTypeParameters = true
+    parameterNames = true
+    rangeVariableTypes = true
+    usePlaceholders = true
+    assignVariableTypes = true
+
+    [language-server.gopls.config.codelenses]
+    gc_details = true
+    generate = true
+    regenerate_cgo = true
+    run_govulncheck = true
+    tidy = true
+    upgrade_dependency = true
+    vendor = true

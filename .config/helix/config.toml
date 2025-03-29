@@ -1,0 +1,70 @@
+# theme="ao"
+# theme="bogster"
+# theme = "horizon-dark"
+theme = "kaolin-light"
+
+[editor]
+true-color=true # 真彩
+auto-completion=true # 
+auto-save=false # 自动保存
+auto-info=true 
+cursorline=true
+line-number="relative" # 行号显示规则
+idle-timeout=0 # 自上次按键后空闲计时器触发前的时间，以毫秒为单位。用于自动补全，设置为 0 表示即时补全。
+bufferline = "multiple" 
+color-modes=true
+# popup-border="popup" # 提示的边框
+
+[editor.file-picker]
+hidden = false # 显示隐藏文件
+
+[editor.lsp]
+display-messages=true # 	在 statusline 下方显示LSP进度消息
+display-inlay-hints=true # 
+auto-signature-help=true # 自动弹出签名帮助(和参数提示)
+display-signature-help-docs=true # 在签名帮助弹出菜单中显示文档
+goto-reference-include-declaration=false # 查找引用的时候不显示定义
+
+[editor.soft-wrap]
+enable=true
+# wrap-at-text-width=true
+
+[editor.indent-guides]
+render = true
+character = "╎"
+
+# 行内错误
+[editor.inline-diagnostics]
+cursor-line = "warning"
+other-lines = "error"
+
+[editor.whitespace.characters]
+
+# 光标样式
+[editor.cursor-shape]
+insert = "block"
+normal = "block"
+select = "underline"
+
+[editor.statusline]
+left=["mode","spinner","diagnostics","version-control","spacer","position-percentage"] # 模式 错误 版本控制 文件百分比
+center=[]
+right=["file-modification-indicator","workspace-diagnostics","position","file-name","separator","file-line-ending"] # 未保存 工作空间错误 当前位置 文件名 | 换行符
+separator="|" # 分隔符
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+# 键盘映射
+[keys.normal]
+C-q = ":bc" # 关闭当前缓冲区
+C-r = [":w",":rla",":lsp-restart"] # 重新加载当前工作区
+C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":redraw"] # 打开lazygit
+
+[keys.normal.space]
+F = "file_picker_in_current_buffer_directory"
+
+[keys.insert]
+"C-s" = ["normal_mode",":w"] # ctrl+s 保存文件
+"C-a" = ["code_action","normal_mode"] # ctrl+a 代码行为,比如自动填充结构体值
+"C-r"= ["normal_mode",":w",":rla",":lsp-restart"] # 重新加载当前工作区

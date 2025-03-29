@@ -1,0 +1,9 @@
+.bashrc:~/.bashrc
+.config/user-dirs.dirs:~/.config/user-dirs.dirs
+.config/zellij:~/.config/zellij
+.config/alacritty:~/.config/alacritty
+.config/helix:~/.config/helix
+.config/waybar:~/.config/waybar
+.emacs.d/init.el:~/.emacs.d/init.el
+# .emacs.d/early-init.el:~/.emacs.d/early-init.el
+.emacs.d/lisp:~/.emacs.d/lisp
