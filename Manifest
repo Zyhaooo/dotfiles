@@ -1,6 +1,6 @@
 # bash
 .bashrc:~/.bashrc
-git-prompt.sh:~/git-promat.sh
+git:~/.git
 
 # emacs
 .emacs.d/init.el:~/.emacs.d/init.el

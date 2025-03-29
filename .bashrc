@@ -6,7 +6,8 @@ alias grep='grep --color=auto'
 alias hx='helix'
 alias e="emacs -nw"
 
-. ~/git-promat.sh
+. ~/.git/git-prompt.sh
+. ~/.git/git-completion.bash
 export GIT_PS1_SHOWDIRTYSTATE=1 # 显示未提交修改
 export GIT_PS1_SHOWUNTRACKEDFILES=1 # % 存在未跟踪文件
 export GIT_PS1_SHOWUPSTREAM="auto" # 显示本地与远程分支差异 > => 本地领先; < => 本地落后
