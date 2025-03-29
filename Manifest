@@ -1,4 +1,8 @@
+# bash
 .bashrc:~/.bashrc
+git-prompt.sh:~/git-promat.sh
+
+# emacs
 .emacs.d/init.el:~/.emacs.d/init.el
 .emacs.d/lisp:~/.emacs.d/lisp
 NOTE.md:~/NOTE.MD

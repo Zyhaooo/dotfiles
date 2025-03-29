@@ -1,7 +1,7 @@
+theme="autumn_night"
 # theme="ao"
 # theme="bogster"
 # theme = "horizon-dark"
-theme = "kaolin-light"
 
 [editor]
 true-color=true # 真彩
