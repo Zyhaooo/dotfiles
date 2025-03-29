@@ -38,8 +38,16 @@ process_manifest() {
         })
 
         target=$(eval echo "$target")
-
-        if [ -e "$target" ] || [ -L "$target" ]; then
+        if [ -L "$target" ]; then
+            # 如果是软链接则删除
+            if rm "$target"; then
+                log_info "已删除软链接: $target"
+            else
+                log_error "删除软链接失败: $target"
+                continue
+            fi
+        elif [ -e "$target" ]; then
+            # 如果是普通文件/目录则备份
             backup_target="${target}_bak"
             if mv "$target" "$backup_target" 2>/dev/null; then
                 log_info "完成备份: ${target} → ${backup_target}"
@@ -47,10 +55,12 @@ process_manifest() {
                 log_error "备份失败: ${target} 原文件保留"
                 continue
             fi
-        fi
+        fi        
 
         # emacs 操作
         mkdir -p ~/.emacs.d
+
+        log_info "开始创建: ln -s $source $target"
 
         if ln -s "$source" "$target"; then
             log_success "创建成功: ${target} ⇒ ${source}"
