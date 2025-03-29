@@ -3,12 +3,7 @@ name = "dart"
 file-types = [ "dart" ]
 roots = [ "pubspec.yaml" ]
 auto-format = true
-comment-token = "//"
 language-servers = [ "dart" ]
-
-  [language.block-comment-tokens]
-  start = "/*"
-  end = "*/"
 
   [language.indent]
   tab-width = 2

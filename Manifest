@@ -1,5 +1,16 @@
 .bashrc:~/.bashrc
-.config/*:~/.config
 .emacs.d/init.el:~/.emacs.d/init.el
 .emacs.d/lisp:~/.emacs.d/lisp
 NOTE.md:~/NOTE.MD
+
+.config/alacritty:~/.config/alacritty
+.config/helix:~/.config/helix
+.config/i3:~/.config/i3
+.config/i3status-rust:~/.config/i3status-rust
+.config/kitty:~/.config/kitty
+.config/rofi:~/.config/rofi
+.config/waybar:~/.config/waybar
+.config/wezterm:~/.config/wezterm
+.config/zellij:~/.config/zellij
+.config/picom.conf:~/.config/picom.conf
+.config/user-dirs.dirs:~/.config/user-dirs.dirs

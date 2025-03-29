@@ -39,8 +39,6 @@ process_manifest() {
 
         target=$(eval echo "$target")
 
-        echo $target
-
         if [ -e "$target" ] || [ -L "$target" ]; then
             backup_target="${target}_bak"
             if mv "$target" "$backup_target" 2>/dev/null; then
@@ -51,10 +49,8 @@ process_manifest() {
             fi
         fi
 
-        echo $source
-
         # emacs 操作
-        mkdir -p .emacs.d
+        mkdir -p ~/.emacs.d
 
         if ln -s "$source" "$target"; then
             log_success "创建成功: ${target} ⇒ ${source}"
