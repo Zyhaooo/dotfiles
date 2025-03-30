@@ -1,5 +1,8 @@
 export EDITOR="helix"
+
 export GOPATH="$HOME/.local/share/go"
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$GOPATH/bin
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
@@ -8,10 +11,6 @@ alias e="emacs -nw"
 
 . ~/.git/git-prompt.sh
 . ~/.git/git-completion.bash
-export GIT_PS1_SHOWDIRTYSTATE=1 # 显示未提交修改
-export GIT_PS1_SHOWUNTRACKEDFILES=1 # % 存在未跟踪文件
-export GIT_PS1_SHOWUPSTREAM="auto" # 显示本地与远程分支差异 > => 本地领先; < => 本地落后
-export GIT_PS1_SHOWCOLORHINTS=1 # 颜色支持
 
 # 随机ASCII颜文字/表情
 emoticons=(
@@ -29,35 +28,47 @@ if [[ $- == *i* ]]; then
     echo -e "\e[36m${emoticons[$RANDOM % ${#emoticons[@]}]}\e[0m"
 fi
 
-# 自定义 PS1 提示符（含命令状态颜色）
+# 自定义 PS1 提示符
 set_prompt() {
     local last_status=$?
 
-    # 增强对比度的颜色（保留基础色但使用加亮版本）
-    local RED="\[\e[91;1m\]"    # 亮红
-    local GREEN="\[\e[92;1m\]"  # 亮绿
-    local YELLOW="\[\e[93;1m\]" # 亮黄
-    local MAGENTA="\[\e[95;1m\]" # 亮品红
+    # 使用RGB颜色
+    # 前景色
+    # \[\e[38;2;R;G;Bm\]
+    # 背景色
+    # \[\e[48;2;R;G;Bm\]
+    #
+    # 使用256色
+    # 前景色
+    # \[\e[38;5;{n}m\]
+    # 背景色
+    # \[\e[48;5;{n}m\]
+    #
+
+    local GIT_COLOR="\[\e[38;2;0;255;204m\]"
+    local DIR_COLOR="\[\e[38;2;255;251;0m\]"
+    local STATUS_COLOR_0="\[\e[38;2;255;0;255m\]"
+    local STATUS_COLOR_1="\[\e[38;2;255;60;0m\]"
+    
     local RESET="\[\e[0m\]"
 
-    # 状态颜色（保持红/绿但更明亮）
     local status_color
     if [ $last_status -eq 0 ]; then
-        status_color="${GREEN}"
+        status_color="${STATUS_COLOR_0}"
     else
-        status_color="${RED}"
+        status_color="${STATUS_COLOR_1}"
     fi
 
-    # 当前目录（保持黄色但更醒目）
-    local current_dir="${YELLOW}\W${RESET}"
+    # 当前目录
+    local current_dir="${DIR_COLOR}\W${RESET}"
 
-    # Git信息（提升对比度）
-    git_status="$(__git_ps1 " (%s)")"
+    # Git信息
+    git_status="${GIT_COLOR}$(__git_ps1 " %s")${RESET}"
 
-    # 最终PS1（保持原有结构，优化颜色）
-    PS1="[${current_dir}${git_status}]${status_color} #${RESET} "
+    # 最终PS1
+    PS1="${status_color}λ ${RESET}${current_dir}${git_status} "
 }
-# 每次显示提示符前更新状态
+
 PROMPT_COMMAND=set_prompt
 
 

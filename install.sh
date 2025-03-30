@@ -71,8 +71,30 @@ process_manifest() {
     done < "$manifest"
 }
 
+setup_golang_linux() {
+
+    GOLANG_PACKAGE_NAME="go1.23.7.linux-amd64.tar.gz"
+    GOLANG_PACKAGE_URL="https://golang.google.cn/dl/"
+
+    wget $GOLANG_PACKAGE_URL$GOLANG_PACKAGE_NAME
+
+    sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf $GOLANG_PACKAGE_NAME
+
+    rm -rf $GOLANG_PACKAGE_NAME
+}
+
 main() {
     process_manifest
+
+    log_normal "开始配置golang环境"
+
+    os_type=$(uname -s)
+    if [ $os_type == "Linux" ]; then
+        setup_golang_linux
+    elif [ $os_type == "Darwin" ]; then
+        echo -e "not support yet"
+    fi
+    
     log_normal "操作完成"
 }
 
