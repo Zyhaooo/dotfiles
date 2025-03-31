@@ -18,3 +18,4 @@ NOTE.md:~/NOTE.MD
 .config/zellij:~/.config/zellij
 .config/picom.conf:~/.config/picom.conf
 .config/user-dirs.dirs:~/.config/user-dirs.dirs
+.config/hypr:~/.config/hypr

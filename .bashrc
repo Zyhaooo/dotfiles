@@ -12,7 +12,13 @@ alias e="emacs -nw"
 . ~/.git/git-prompt.sh
 . ~/.git/git-completion.bash
 
-# 随机ASCII颜文字/表情
+# fcitx5
+export GTK_IM_MODULE=fcitx5
+export QT_IM_MODULE=fctix5
+export XMODIFIERS=@im=fcitx5
+export SDL_IM_MODULE=fcitx5
+export INPUT_METHOD=fcitx5
+
 emoticons=(
     ":)"
     ":D"
@@ -23,12 +29,10 @@ emoticons=(
     "=^.^="
 )
 
-# 如果是交互式终端，则随机选择一个表情
 if [[ $- == *i* ]]; then
     echo -e "\e[36m${emoticons[$RANDOM % ${#emoticons[@]}]}\e[0m"
 fi
 
-# 自定义 PS1 提示符
 set_prompt() {
     local last_status=$?
 
@@ -59,13 +63,10 @@ set_prompt() {
         status_color="${STATUS_COLOR_1}"
     fi
 
-    # 当前目录
     local current_dir="${DIR_COLOR}\W${RESET}"
 
-    # Git信息
     git_status="${GIT_COLOR}$(__git_ps1 " %s")${RESET}"
 
-    # 最终PS1
     PS1="${status_color}λ ${RESET}${current_dir}${git_status} "
 }
 
