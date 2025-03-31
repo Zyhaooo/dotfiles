@@ -90,7 +90,12 @@ main() {
 
     os_type=$(uname -s)
     if [ $os_type == "Linux" ]; then
-        setup_golang_linux
+        if command -v go &>/dev/null; then
+            log_normal "golang环境已经安装!"
+        else
+            log_normal "开始安装golang环境!"
+            setup_golang_linux
+        fi
     elif [ $os_type == "Darwin" ]; then
         echo -e "not support yet"
     fi

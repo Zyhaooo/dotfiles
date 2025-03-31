@@ -15,6 +15,7 @@
 - 文件描述符(file descriptor): 通常是一个小的非负整数
 - `rpm -qa | grep kernel`: 查看内核
 - `rpm -e <packages>`: 删除rpm包
+- dd查看进度: sudo dd of=/dev/sda if=/dev/zero status=progress
 
 # git
 

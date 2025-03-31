@@ -6,8 +6,12 @@ export PATH=$PATH:$GOPATH/bin
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias hx='helix'
 alias e="emacs -nw"
+if command -v helix &>/dev/null; then
+    alias hx="helix"
+fi
+
+export PATH=$PATH:$HOME/.cargo/bin
 
 . ~/.git/git-prompt.sh
 . ~/.git/git-completion.bash
