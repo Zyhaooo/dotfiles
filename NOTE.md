@@ -16,6 +16,14 @@
 - `rpm -qa | grep kernel`: 查看内核
 - `rpm -e <packages>`: 删除rpm包
 - dd查看进度: sudo dd of=/dev/sda if=/dev/zero status=progress
+- linux下如果需要提权的话,一般需要polkit这个工具
+
+# hyprland
+
+- 可以禁用xwayland的缩放然后修改DPI来避免分数缩放导致的软件模糊
+  - `xwayland { force_zero_scaling = true }`
+  - Xft.dpi: 192 >> .Xresources
+  - xrdb -merge .Xresources
 
 # git
 
