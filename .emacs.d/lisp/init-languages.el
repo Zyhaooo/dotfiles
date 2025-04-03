@@ -69,5 +69,20 @@
   :diminish
   :hook (rust-mode . cargo-minor-mode))
 
+(use-package protobuf-mode
+  :ensure t
+  :mode "\\.proto\\'"  ;; 自动为.proto文件启用protobuf-mode（参考网页4）
+  :config
+  (setq protobuf-indent-level 2)  ;; 缩进优化
+  )
+
+(use-package yaml-mode
+  :ensure t
+  :mode (("\\.yaml\\'" . yaml-mode)   ;; 自动关联.yaml文件
+         ("\\.yml\\'" . yaml-mode))   ;; 自动关联.yml文件
+  :config
+  (setq yaml-indent-offset 2)
+  )
+
 (provide 'init-languages)
 ;;; init-languages.el ends here
